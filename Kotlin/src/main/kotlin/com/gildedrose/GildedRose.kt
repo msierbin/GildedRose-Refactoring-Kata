@@ -6,30 +6,30 @@ class GildedRose(var items: List<Item>) {
         for (item in items) {
             if (item.name == "Aged Brie") {
                 item.updateQualityBy(1)
-                if (item.sellIn < 1) {
+                if (item.sellInDays < 1) {
                     item.updateQualityBy(1)
                 }
-                item.updateSellIn()
+                item.updateSellInDaysBy(-1)
             } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
                 item.updateQualityBy(1)
-                if (item.sellIn < 11) {
+                if (item.sellInDays < 11) {
                     item.updateQualityBy(1)
                 }
-                if (item.sellIn < 6) {
+                if (item.sellInDays < 6) {
                     item.updateQualityBy(1)
                 }
-                if (item.sellIn < 1) {
-                    item.quality = 0
+                if (item.sellInDays < 1) {
+                    item.updateQualityBy(-item.quality)
                 }
-                item.updateSellIn()
+                item.updateSellInDaysBy(-1)
             } else if (item.name == "Sulfuras, Hand of Ragnaros") {
                 // empty
             } else {
                 item.updateQualityBy(-1)
-                if (item.sellIn < 1) {
+                if (item.sellInDays < 1) {
                     item.updateQualityBy(-1)
                 }
-                item.updateSellIn()
+                item.updateSellInDaysBy(-1)
             }
         }
     }
@@ -45,7 +45,7 @@ private fun Item.updateQualityBy(increment: Int) {
     }
 }
 
-private fun Item.updateSellIn() {
-    this.sellIn -= 1
+private fun Item.updateSellInDaysBy(increment: Int) {
+    this.sellInDays += increment
 }
 
