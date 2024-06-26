@@ -8,12 +8,12 @@ class GildedRose(var items: List<Item>) {
                 if (item.quality < 50) {
                     item.quality += 1
                 }
-                item.sellIn -= 1
                 if (item.quality < 50) {
-                    if (item.sellIn < 0) {
+                    if (item.sellIn < 1) {
                         item.quality += 1
                     }
                 }
+                item.sellIn -= 1
             } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
                 if (item.quality < 50) {
                     item.quality += 1
@@ -30,22 +30,22 @@ class GildedRose(var items: List<Item>) {
                         }
                     }
                 }
-                item.sellIn -= 1
-                if (item.sellIn < 0) {
+                if (item.sellIn < 1) {
                     item.quality = 0
                 }
+                item.sellIn -= 1
             } else if (item.name == "Sulfuras, Hand of Ragnaros") {
-                    // empty
+                // empty
             } else {
                 if (item.quality > 0) {
                     item.quality -= 1
                 }
-                item.sellIn -= 1
                 if (item.quality > 0) {
-                    if (item.sellIn < 0) {
+                    if (item.sellIn < 1) {
                         item.quality -= 1
                     }
                 }
+                item.sellIn -= 1
             }
         }
     }
