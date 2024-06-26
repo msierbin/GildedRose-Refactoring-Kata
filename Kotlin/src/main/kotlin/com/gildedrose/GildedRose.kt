@@ -35,12 +35,6 @@ class GildedRose(var items: List<Item>) {
                 item.sellIn -= 1
             }
 
-            if (item.name == "Sulfuras, Hand of Ragnaros") {
-                // empty
-            } else {
-                // removed
-            }
-
             if (item.name == "Aged Brie") {
                 if (item.quality < 50) {
                     if (item.sellIn < 0) {
