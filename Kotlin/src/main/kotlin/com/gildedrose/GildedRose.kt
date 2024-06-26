@@ -42,8 +42,13 @@ class GildedRose(var items: List<Item>) {
 
 }
 
-private fun Item.updateQuality(int: Int) {
-    this.quality += int
+//- The `Quality` of an item is never negative
+//- The `Quality` of an item is never more than `50`
+private fun Item.updateQuality(increment: Int) {
+    val newQuality = this.quality + increment
+    if (newQuality in 0..50) {
+        this.quality = newQuality
+    }
 }
 
 private fun Item.updateSellIn() {
