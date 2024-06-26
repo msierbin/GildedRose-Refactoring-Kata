@@ -11,15 +11,13 @@ class GildedRose(var items: List<Item>) {
                 if (item.quality < 50 && item.sellIn < 1) {
                     item.quality += 1
                 }
-                item.sellIn -= 1
+                item.updateSellIn()
             } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
                 if (item.quality < 50) {
                     item.quality += 1
-
                     if (item.quality < 50 && item.sellIn < 11) {
                         item.quality += 1
                     }
-
                     if (item.quality < 50 && item.sellIn < 6) {
                         item.quality += 1
                     }
@@ -27,7 +25,7 @@ class GildedRose(var items: List<Item>) {
                 if (item.sellIn < 1) {
                     item.quality = 0
                 }
-                item.sellIn -= 1
+                item.updateSellIn()
             } else if (item.name == "Sulfuras, Hand of Ragnaros") {
                 // empty
             } else {
@@ -37,10 +35,14 @@ class GildedRose(var items: List<Item>) {
                 if (item.quality > 0 && item.sellIn < 1) {
                     item.quality -= 1
                 }
-                item.sellIn -= 1
+                item.updateSellIn()
             }
         }
     }
 
+}
+
+private fun Item.updateSellIn() {
+    this.sellIn -= 1
 }
 
